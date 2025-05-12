@@ -45,4 +45,4 @@ This repository contains the code, models, and documentation for a mobile self-c
 
 ## Documentation
 
-The full technical report is available in `NeurIPS_2024__1_.pdf`.
+The full technical report is available in `Report.pdf`.
