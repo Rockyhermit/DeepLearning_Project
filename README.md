@@ -32,6 +32,7 @@ This repository contains the code, models, and documentation for a mobile self-c
 - Optimizer: AdamW with cosine learning rate decay and occlusion-aware scheduling
 - Post-processing: Multi-scale inference, Soft-NMS, sliding window detection
 - Evaluation Metrics: Precision, Recall, mAP@50, mAP@50:95, box loss, classification loss, DFL loss
+- The final weight for occlusion best.pt --> https://www.mediafire.com/file/m5b2klky60na8dn/best.pt/file
 
 ## Results
 
