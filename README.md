@@ -39,7 +39,7 @@ This repository contains the code, models, and documentation for a mobile self-c
 - YOLO outperformed SSD and Faster R-CNN in both accuracy and real-time capability.
 - Resolution analysis on the MinneApple dataset provided empirical recommendations for detecting apples at varying distances.
 
-## Team Members
+## Team Members 
 
 - Pratheek Tirunagari
 - Ashruj Gautam
