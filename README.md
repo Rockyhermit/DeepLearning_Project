@@ -1,49 +1,81 @@
-# AI-Powered Self-Checkout System – Apple Detection with YOLO
+# Occlusion-Aware Apple Detection Using Custom YOLO Architecture
 
-This repository contains the code, models, and documentation for a mobile self-checkout application focused on detecting apples using computer vision techniques. The project explores multiple object detection architectures, ultimately developing a custom YOLO model optimized for detecting apples under challenging conditions such as occlusion and small object scale.
+## Overview
 
-## Project Objectives
+This project focuses on building a robust object detection model for self-checkout systems, specifically targeting apple detection. While standard models like SSD and Faster R-CNN struggled with occlusion and small object detection, we designed a custom YOLO-based architecture to address these issues directly.
 
-- Enable real-time apple detection for self-checkout scenarios.
-- Address occlusion and scale issues with custom architecture and post-processing techniques.
-- Evaluate multiple models and select the most suitable approach based on performance and real-time feasibility.
+The model was trained on the COCO dataset (class 47 – apples) and the MinneApple dataset. Through architectural improvements, occlusion-aware loss functions, and resolution-sensitive analysis, this project improves YOLO’s reliability in detecting partially hidden and distant apples.
 
-## Datasets Used
+---
 
-- **COCO Dataset (Class 47 - Apple)**  
-  Source: [https://cocodataset.org/#home](https://cocodataset.org/#home)  
-  Used for training object detection models. Only the apple class (class ID 47) was extracted.
+## Motivation: Occlusion as a Real-World Challenge
 
-- **MinneApple Dataset**  
-  Source: [https://rsn.umn.edu/projects/orchard-monitoring/minneapple](https://rsn.umn.edu/projects/orchard-monitoring/minneapple)  
-  Used for analyzing detection performance on small, distant apples and conducting resolution analysis.
+In practical applications such as retail checkout and orchard monitoring, apples are often:
 
-## Models Evaluated
+- Partially hidden behind other objects or foliage
+- Distant from the camera and thus appear small in the image
 
-- SSD (Single Shot Detector)
-- Faster R-CNN
-- YOLO (You Only Look Once)
-  - Custom YOLO architecture designed for improved apple detection.
-  - Pretrained YOLOv11x evaluated with post-processing techniques.
+Traditional object detection architectures fail under such conditions due to limited context capture, weak feature fusion, or resolution sensitivity. This project identifies these shortcomings in YOLO and proposes a complete solution pipeline.
 
-## Technical Highlights
+---
 
-- Composite Loss Function: CIoU, Focal Loss, and Distribution Focal Loss
-- Optimizer: AdamW with cosine learning rate decay and occlusion-aware scheduling
-- Post-processing: Multi-scale inference, Soft-NMS, sliding window detection
-- Evaluation Metrics: Precision, Recall, mAP@50, mAP@50:95, box loss, classification loss, DFL loss
-- The final weight for occlusion best.pt: https://www.mediafire.com/file/m5b2klky60na8dn/best.pt/file
+## Key Contributions
 
-## Results
+### 1. Custom YOLO Architecture
 
-- YOLO outperformed SSD and Faster R-CNN in both accuracy and real-time capability.
-- Resolution analysis on the MinneApple dataset provided empirical recommendations for detecting apples at varying distances.
+- **Larger Receptive Field**: Modified SPPF kernel size from 5×5 to 7×7 for improved contextual awareness of occluded apples.
+- **Cross-Stage Partial Spatial Attention (C2PSA)**: Used 3-repeat C2PSA blocks for stronger feature fusion across layers.
+- **Multi-Scale Feature Pyramid (P3/8, P4/16, P5/32)**: Enables detection of apples at varying distances and sizes.
 
-## Team Members 
+### 2. Occlusion-Aware Loss Function
 
-- Pratheek Tirunagari
-- Ashruj Gautam
+- **CIoU Loss**: Enhances bounding box precision using overlap area, center distance, and aspect ratio.
+- **Focal Loss (Modified for Occlusion)**: Penalizes the model more when misclassifying partially hidden apples.
+- **Distribution Focal Loss (DFL)**: Optimizes coordinate prediction for improved localization.
 
-## Documentation
+### 3. Resolution-Sensitive Detection
 
-The full technical report is available in `Report.pdf`.
+Using the MinneApple dataset, we performed resolution analysis and determined optimal image input sizes for apple detection at different distances:
+
+- 320×320 for medium-range apples
+- 416×416 for distant apples
+
+### 4. Enhanced Post-Processing
+
+- **Soft-NMS**: Retains multiple overlapping detections with reduced confidence rather than discarding them.
+- **Multi-Scale Inference**: Evaluates images across multiple scales for more robust detection.
+- **Sliding Window**: Ensures coverage in high-resolution images by dividing and scanning overlapping regions.
+
+---
+
+## Experimental Results
+
+| Model             | mAP@50 | Occlusion Handling | Real-Time Inference |
+|------------------|--------|--------------------|----------------------|
+| SSD              | Low    | Poor               | Yes                  |
+| Faster R-CNN     | Moderate | Moderate         | No                   |
+| **Custom YOLO**  | 0.392  | Strong             | Yes                  |
+
+<sub>Metrics shown for validation performance. See `results.csv` for epoch-wise performance data.</sub>
+
+---
+
+## Datasets
+
+### COCO Dataset
+- Used only **class 47 (apple)** images.
+- Preprocessing: Normalization, resizing to 1280×1280.
+- Augmentation: Mosaic, flipping, HSV color space shifts.
+- Source: [https://cocodataset.org/#home](https://cocodataset.org/#home)
+
+
+### MinneApple Dataset
+- Specializes in orchard apple imagery.
+- Contains small, distant apple instances.
+- Used for **resolution benchmarking** and distance-aware inference design.
+- Source: [https://rsn.umn.edu/projects/orchard-monitoring/minneapple](https://rsn.umn.edu/projects/orchard-monitoring/minneapple)  
+
+---
+
+## Repository Structure
+
