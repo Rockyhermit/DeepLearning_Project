@@ -6,6 +6,8 @@ This project focuses on building a robust object detection model for self-checko
 
 The model was trained on the COCO dataset (class 47 – apples) and the MinneApple dataset. Through architectural improvements, occlusion-aware loss functions, and resolution-sensitive analysis, this project improves YOLO’s reliability in detecting partially hidden and distant apples.
 
+![image](https://github.com/user-attachments/assets/b5dcf098-731f-4cab-84a0-28646690da48)
+
 ---
 
 ## Motivation: Occlusion as a Real-World Challenge
