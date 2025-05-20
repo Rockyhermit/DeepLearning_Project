@@ -79,5 +79,52 @@ Using the MinneApple dataset, we performed resolution analysis and determined op
 
 ---
 
-## Repository Structure
+
+---
+
+## Implementation Details
+
+- Framework: PyTorch
+- Optimizer: AdamW (cosine decay, warmup scheduling)
+- Batch Size: 4
+- Loss Scaling: Adaptive gradient-based scaling
+- Training: Conducted on GPU with limited resources; total training epochs ~130
+
+---
+
+## Visualizations
+
+**Occlusion Case Example**  
+![Occlusion Case](assets/occlusion_case.png)
+
+**Post-Processing Result**  
+![YOLO with Soft-NMS](assets/occlusion_fixed.png)
+
+**Resolution Sensitivity Test**  
+![Resolution Comparison](assets/yolo_results_graph.png)
+
+<sub>Note: Place the extracted images from the report under an `assets/` folder in this repository.</sub>
+
+---
+
+## Team Contributions
+
+| Name                  | Key Responsibilities                              |
+|-----------------------|----------------------------------------------------|
+| Pratheek Tirunagari   | YOLO architecture, custom backbone, training code |
+| Ashruj Gautam         | Benchmarking, Soft-NMS, post-processing methods   |
+
+---
+
+## Full Report
+
+The complete documentation, methodology, architecture diagrams, loss functions, resolution results, and evaluation metrics are available in the [project report (PDF)](https://github.com/Pratheek-Tirunagari-and-Ashruj-Gautam/DeepLearning_Project/blob/main/report.pdf).
+
+---
+
+## Future Work
+
+- Integration with Android-based self-checkout app
+- Real-time benchmarking on embedded devices (e.g., Jetson Nano, Raspberry Pi with Coral)
+- Fine-tuning with hard example mining
 
