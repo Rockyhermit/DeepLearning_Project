@@ -98,7 +98,7 @@ Using the MinneApple dataset, we performed resolution analysis and determined op
 ![Occlusion Case](Results/a4.png)
 
 **Post-Processing Result**  
-![YOLO with Soft-NMS](assets/occlusion_fixed.png)
+![YOLO with Soft-NMS](Results/occlusion_case.png)
 
 **Resolution Sensitivity Test**  
 ![Resolution Comparison](assets/yolo_results_graph.png)
