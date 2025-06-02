@@ -101,7 +101,7 @@ Using the MinneApple dataset, we performed resolution analysis and determined op
 ![YOLO with Soft-NMS](Results/occlusion_case.png)
 
 **Resolution Sensitivity Test**  
-![Resolution Comparison](assets/yolo_results_graph.png)
+![Resolution Comparison](Results/kong.png)
 
 <sub>Note: Place the extracted images from the report under an `assets/` folder in this repository.</sub>
 
