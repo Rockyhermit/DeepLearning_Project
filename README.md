@@ -1,6 +1,6 @@
 # Occlusion-Aware Apple Detection Using Custom YOLO Architecture
 ## Authors
-Ashruj Gautam\n
+Ashruj Gautam
 Pratheek Tirunagari
 ## Overview
 
