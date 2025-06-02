@@ -1,5 +1,7 @@
 # Occlusion-Aware Apple Detection Using Custom YOLO Architecture
-
+## Authors
+Ashruj Gautam
+Pratheek Tirunagari
 ## Overview
 
 This project focuses on building a robust object detection model for self-checkout systems, specifically targeting apple detection. While standard models like SSD and Faster R-CNN struggled with occlusion and small object detection, we designed a custom YOLO-based architecture to address these issues directly.
