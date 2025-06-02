@@ -95,7 +95,7 @@ Using the MinneApple dataset, we performed resolution analysis and determined op
 ## Visualizations
 
 **Occlusion Case Example**  
-![Occlusion Case](Results/Screenshot 2025-04-27 024450.png)
+![Occlusion Case](Results/occlusion_case.png)
 
 **Post-Processing Result**  
 ![YOLO with Soft-NMS](assets/occlusion_fixed.png)
