@@ -103,18 +103,7 @@ Using the MinneApple dataset, we performed resolution analysis and determined op
 **Resolution Sensitivity Test**  
 ![Resolution Comparison](Results/kong.png)
 
-<sub>Note: Place the extracted images from the report under an `assets/` folder in this repository.</sub>
 
----
-
-## Team Contributions
-
-| Name                  | Key Responsibilities                              |
-|-----------------------|----------------------------------------------------|
-| Pratheek Tirunagari   | YOLO architecture, custom backbone, training code |
-| Ashruj Gautam         | Benchmarking, Soft-NMS, post-processing methods   |
-
----
 
 ## Full Report
 
